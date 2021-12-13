@@ -64,44 +64,44 @@ export default {
       userImg: require('../../assets/images/user.png'),
       tableData: [],
       tableLabel: {
-        name: '手机牌子',
-        todayBuy: '今日购买',
-        monthBuy: '月度购买',
-        totalBuy: '总购买'
+        name: '地区',
+        todayBuy: '总人数',
+        monthBuy: '感染数',
+        totalBuy: '死亡数'
       },
       countData: [
         {
-          name: '今日支付订单',
+          name: '今日确诊数',
           value: 1234,
           icon: 'success',
           color: '#2ec7c9'
         },
         {
-          name: '今日收藏订单',
+          name: '今日疑似病例数',
           value: 1234,
           icon: 'star-on',
           color: '#ffb980'
         },
         {
-          name: '今日未支付',
+          name: '今日死亡数',
           value: 1234,
           icon: 's-goods',
           color: '#ffb980'
         },
         {
-          name: '本月支付订单',
+          name: '本月确诊数',
           value: 1234,
           icon: 'success',
           color: '#2ec7c9'
         },
         {
-          name: '本月支付订单',
+          name: '本月意思病例',
           value: 1234,
           icon: 'star-on',
           color: '#ffb980'
         },
         {
-          name: '本月支付订单',
+          name: '本月死亡数',
           value: 1234,
           icon: 's-goods',
           color: '#ffb980'
@@ -235,12 +235,12 @@ export default {
         // 用户图
         this.echartsData.user.xAxis.data = res.data.userData.map((item) => item.date)
         this.echartsData.user.series.push({
-          name: '新增用户',
+          name: '今日新增',
           data: res.data.userData.map((item) => item.new),
           type: 'bar'
         })
         this.echartsData.user.series.push({
-          name: '活跃用户',
+          name: '今日死亡',
           data: res.data.userData.map((item) => item.active),
           type: 'bar'
         })
