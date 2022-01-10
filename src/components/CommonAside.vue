@@ -8,8 +8,8 @@
            text-color="#fff"
            active-text-color="#ffd04b"
   >
-    <h3 v-show="!isCollapse">通用后台管理系统</h3>
-    <h3 v-show="isCollapse">后台</h3>
+    <h3 v-show="!isCollapse">疫情趋势查询系统</h3>
+    <h3 v-show="isCollapse">查询</h3>
     <el-menu-item :index="item.path" v-for="item in noChildren" :key="item.
     path" @click="clickMenu(item)">
       <i :class="'el-icon-' + item.icon"></i>
@@ -46,38 +46,10 @@ export default {
         {
           path: '/mall',
           name: 'mall',
-          label: '商品管理',
+          label: '详细信息',
           icon: 'video-play',
           url: 'MallManage/MallManage'
-        },
-        {
-          path: '/user',
-          name: 'user',
-          label: '用户管理',
-          icon: 'user',
-          url: 'UserManage/UserManage'
-        },
-        {
-          label: '其他',
-          icon: 'location',
-          children: [
-            {
-              path: '/page1',
-              name: 'page1',
-              label: '页面1',
-              icon: 'setting',
-              url: 'Other/PageOne'
-            },
-            {
-              path: '/page2',
-              name: 'page2',
-              label: '页面2',
-              icon: 'setting',
-              url: 'Other/PageTwo'
-            }
-          ]
         }
-
       ]
     }
   },

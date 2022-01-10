@@ -48,6 +48,21 @@ export default {
             value: 4500
           }
         ],
+        //  饼图具体
+        videoData1: [
+          {
+            name: '确诊人数',
+            value: 12999
+          },
+          {
+            name: '疑似病例人数',
+            value: 5999
+          },
+          {
+            name: '死亡数',
+            value: 150
+          }
+        ],
         // 柱状图
         userData: [
           {
@@ -88,45 +103,136 @@ export default {
         ],
         // 折线图
         orderData: {
-          date: ['20191001', '20191002', '20191003', '20191004', '20191005', '20191006', '20191007'],
+          date: ['20200320', '20200321', '20200322', '20200323', '20200324', '20200325', '20200326'],
           data: List
+        },
+        // 折线图具体
+        forkData: {
+          date: ['20200320', '20200321', '20200322', '20200323', '20200324', '20200325', '20200326'],
+          data: [
+            {
+              纽约: 8310
+            },
+            {
+              纽约: 11710
+            },
+            {
+              纽约: 15800
+            },
+            {
+              纽约: 20884
+            },
+            {
+              纽约: 25681
+            },
+            {
+              纽约: 30841
+            },
+            {
+              纽约: 37877
+            }
+          ]
+        },
+        futureData: {
+          date: ['20200327', '20200328', '20200329', '20200330', '20200331', '20200401', '20200402'],
+          data: [
+            {
+              纽约: 44876
+            },
+            {
+              纽约: 52410
+            },
+            {
+              纽约: 59648
+            },
+            {
+              纽约: 66663
+            },
+            {
+              纽约: 75833
+            },
+            {
+              纽约: 83948
+            },
+            {
+              纽约: 92506
+            }
+          ]
         },
         tableData: [
           {
             name: '纽约',
-            todayBuy: 500,
-            monthBuy: 3500,
-            totalBuy: 22000
+            todayBuy: 500000,
+            monthBuy: 35000,
+            totalBuy: 220
           },
           {
             name: '加利福尼亚',
-            todayBuy: 300,
-            monthBuy: 2200,
-            totalBuy: 24000
+            todayBuy: 300000,
+            monthBuy: 22000,
+            totalBuy: 240
           },
           {
             name: '华盛顿',
-            todayBuy: 800,
-            monthBuy: 4500,
-            totalBuy: 65000
+            todayBuy: 80000,
+            monthBuy: 8000,
+            totalBuy: 650
           },
           {
             name: '德克萨斯',
-            todayBuy: 1200,
+            todayBuy: 120000,
             monthBuy: 6500,
-            totalBuy: 45000
+            totalBuy: 450
           },
           {
             name: '北卡罗来纳州',
-            todayBuy: 300,
+            todayBuy: 30000,
             monthBuy: 2000,
-            totalBuy: 34000
+            totalBuy: 340
           },
           {
             name: '佛蒙特州',
-            todayBuy: 350,
+            todayBuy: 35000,
             monthBuy: 3000,
-            totalBuy: 22000
+            totalBuy: 220
+          }
+        ],
+        tableData1: [
+          {
+            name: '纽约',
+            todayBuy: 50000,
+            monthBuy: 3500,
+            totalBuy: 220
+          },
+          {
+            name: '加利福尼亚',
+            todayBuy: 30000,
+            monthBuy: 2200,
+            totalBuy: 240
+          },
+          {
+            name: '华盛顿',
+            todayBuy: 80000,
+            monthBuy: 8500,
+            totalBuy: 650
+          },
+          {
+            name: '德克萨斯',
+            todayBuy: 120000,
+            monthBuy: 65000,
+            totalBuy: 450
+          },
+          {
+            name: '北卡罗来纳州',
+            todayBuy: 30000,
+            monthBuy: 20000,
+            totalBuy: 340
+          },
+          {
+            name: '佛蒙特州',
+            todayBuy: 35000,
+            monthBuy: 3000,
+            totalBuy: 220
           }
         ]
       }
