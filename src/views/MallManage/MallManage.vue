@@ -40,17 +40,22 @@
         </el-card>
       </div>
       <el-card shadow="hover" style="height: 400px" header="上周感染人数">
-        <div style="height: 300px" ref="echart"></div>
+<!--        <div style="height: 300px" ref="echart"></div>-->
+        <echart :chartData="echartData.order" style="height: 300px"></echart>
       </el-card>
       <el-card shadow="hover" style="height: 400px" header="下周感染人数预测">
-        <div style="height: 300px" ref="echart1"></div>
+<!--        <div style="height: 300px" ref="echart1"></div>-->
+        <echart :chartData="echartData.newone" style="height: 300px"></echart>
       </el-card>
       <div class="graph">
         <el-card shadow="hover" style="height: 260px">
-          <div style="height: 260px" ref="userEchart"></div>
+<!--          <div style="height: 260px" ref="userEchart"></div>-->
+          <echart :chartData="echartData.user" style="height: 260px"></echart>
         </el-card>
         <el-card shadow="hover" style="height: 260px">
-          <div style="height: 260px" ref="vedioEchart"></div>
+<!--          <div style="height: 260px" ref="vedioEchart"></div>-->
+          <echart :chartData="echartData.vedio" style="height: 260px"
+                  :isAxisChart="false"></echart>
         </el-card>
       </div>
     </el-col>
@@ -60,7 +65,11 @@
 <script>
 import { getHome } from '../../api/data'
 import * as echarts from 'echarts'
+import Echart from '@/components/ECharts'
 export default {
+  components: {
+    Echart
+  },
   data () {
     return {
       userImg: require('../../assets/images/user.png'),
@@ -305,6 +314,23 @@ export default {
           series: []
         }
       },
+      echartData: {
+        order: {
+          xData: [],
+          series: []
+        },
+        newone: {
+          xData: [],
+          series: []
+        },
+        user: {
+          xData: [],
+          series: []
+        },
+        vedio: {
+          series: []
+        }
+      },
       input: ''
     }
   },
@@ -317,54 +343,50 @@ export default {
         // 折线图的展示
         const order = res.data.forkData
         console.log(order)
-        // const myEchartsOrder = echarts.init(this.$refs.echart)
-        // myEchartsOrder.setOption(this.echartsData.order)
 
         // 传给组件的值
-        this.echartsData.order.xAxis.data = order.date
+        this.echartData.order.xData = order.date
         const keyArray = Object.keys(order.data[0])
         keyArray.forEach((key) => {
-          this.echartsData.order.series.push({
+          this.echartData.order.series.push({
             name: key,
             data: order.data.map((item) => item[key]),
             type: 'line'
           })
         })
-        const myEchartsOrder = echarts.init(this.$refs.echart)
-        myEchartsOrder.setOption(this.echartsData.order)
 
         const future = res.data.futureData
         console.log(future)
         // 传给组件的值
-        this.echartsData1.order.xAxis.data = future.date
+        this.echartData.newone.xData = order.date
 
         const keyArray1 = Object.keys(future.data[0])
         keyArray1.forEach((key) => {
-          this.echartsData1.order.series.push({
+          this.echartData.newone.series.push({
             name: key,
             data: future.data.map((item) => item[key]),
             type: 'line'
           })
         })
-        const myEchartsOrder1 = echarts.init(this.$refs.echart1)
-        myEchartsOrder1.setOption(this.echartsData1.order)
+        // const myEchartsOrder1 = echarts.init(this.$refs.echart1)
+        // myEchartsOrder1.setOption(this.echartsData1.order)
 
         // 用户图
-        this.echartsData.user.xAxis.data = res.data.userData.map((item) => item.date)
-        this.echartsData.user.series.push({
+        this.echartData.user.data = res.data.userData.map((item) => item.date)
+        this.echartData.user.series.push({
           name: '今日死亡',
           data: res.data.userData.map((item) => item.new),
           type: 'bar'
         })
-        this.echartsData.user.series.push({
+        this.echartData.user.series.push({
           name: '今日新增',
           data: res.data.userData.map((item) => item.active),
           type: 'bar'
         })
-        const myEchartsUser = echarts.init(this.$refs.userEchart)
-        myEchartsUser.setOption(this.echartsData.user)
+        // const myEchartsUser = echarts.init(this.$refs.userEchart)
+        // myEchartsUser.setOption(this.echartsData.user)
 
-        this.echartsData.vedio.series.push({
+        this.echartData.vedio.series.push({
           data: res.data.videoData1,
           type: 'pie'
         })
