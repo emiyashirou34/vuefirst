@@ -46,9 +46,16 @@ export default {
         {
           path: '/mall',
           name: 'mall',
-          label: '详细信息',
+          label: '历史信息',
           icon: 'video-play',
           url: 'MallManage/MallManage'
+        },
+        {
+          path: '/focast',
+          name: 'focast',
+          label: '趋势预测',
+          icon: 'video-play',
+          url: 'Focast/Focast'
         }
       ]
     }

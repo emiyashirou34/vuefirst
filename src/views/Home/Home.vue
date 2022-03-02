@@ -5,13 +5,13 @@
         <div class="user">
           <img :src="userImg"/>
           <div class="userinfo">
-            <p class="name">Admin</p>
-            <p class="access">超级管理员</p>
+            <p class="name">Debug</p>
+            <p class="access">普通游客</p>
           </div>
         </div>
         <div class="login-info">
-          <p>上次登录时间：<span>2020-7-9</span></p>
-          <p>上次登录地点：<span>武汉</span></p>
+          <p>上次登录时间：<span>2020-5-14</span></p>
+          <p>上次登录地点：<span>103.90.137.169</span></p>
         </div>
       </el-card>
       <el-card style="height:470px; margin-top: 20px">
@@ -84,7 +84,7 @@ export default {
           color: '#2ec7c9'
         },
         {
-          name: '今日疑似病例数',
+          name: '今日治愈数',
           value: 1234,
           icon: 'star-on',
           color: '#ffb980'
@@ -102,7 +102,7 @@ export default {
           color: '#2ec7c9'
         },
         {
-          name: '本月疑似病例',
+          name: '本月治愈数',
           value: 1234,
           icon: 'star-on',
           color: '#ffb980'

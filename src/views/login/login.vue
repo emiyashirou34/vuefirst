@@ -5,7 +5,7 @@
         <div class="big-contain" v-if="isLogin">
           <div class="btitle">账户登录</div>
           <div class="bform">
-            <input type="email" placeholder="邮箱" v-model="form.useremail">
+            <input type="email" placeholder="用户名" v-model="form.useremail">
             <span class="errTips" v-if="emailError">* 邮箱填写错误 *</span>
             <input type="password" placeholder="密码" v-model="form.userpwd">
             <span class="errTips" v-if="emailError">* 密码填写错误 *</span>

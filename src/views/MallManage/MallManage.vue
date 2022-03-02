@@ -39,14 +39,14 @@
           </div>
         </el-card>
       </div>
-      <el-card shadow="hover" style="height: 400px" header="上周感染人数">
+      <el-card shadow="hover" style="height: 400px" header="过去感染总趋势">
 <!--        <div style="height: 300px" ref="echart"></div>-->
         <echart :chartData="echartData.order" style="height: 300px"></echart>
       </el-card>
-      <el-card shadow="hover" style="height: 400px" header="下周感染人数预测">
-<!--        <div style="height: 300px" ref="echart1"></div>-->
-        <echart :chartData="echartData.newone" style="height: 300px"></echart>
-      </el-card>
+<!--      <el-card shadow="hover" style="height: 400px" header="下周感染人数预测">-->
+<!--&lt;!&ndash;        <div style="height: 300px" ref="echart1"></div>&ndash;&gt;-->
+<!--        <echart :chartData="echartData.newone" style="height: 300px"></echart>-->
+<!--      </el-card>-->
       <div class="graph">
         <el-card shadow="hover" style="height: 260px">
 <!--          <div style="height: 260px" ref="userEchart"></div>-->
@@ -88,7 +88,7 @@ export default {
           color: '#2ec7c9'
         },
         {
-          name: '今日疑似病例数',
+          name: '今日治愈',
           value: 22842,
           icon: 'star-on',
           color: '#ffb980'
@@ -100,220 +100,24 @@ export default {
           color: '#ffb980'
         },
         {
-          name: '本月确诊数',
+          name: '累计确诊数',
           value: 208911,
           icon: 'success',
           color: '#2ec7c9'
         },
         {
-          name: '本月疑似病例',
+          name: '累计治愈数',
           value: 52227,
           icon: 'star-on',
           color: '#ffb980'
         },
         {
-          name: '本月死亡数',
+          name: '累计死亡数',
           value: 3420,
           icon: 's-goods',
           color: '#ffb980'
         }
       ],
-      echartsData: {
-        order: {
-          legend: {
-            // tuliwenzi
-            textStyle: {
-              color: '#333'
-            }
-          },
-          grid: {
-            left: '20%'
-          },
-          // tishikuang
-          tooltip: {
-            trigger: 'axis'
-          },
-          xAxis: {
-            type: 'category',
-            data: [],
-            axisLine: {
-              lineStyle: {
-                color: '#17b3a3'
-              }
-            },
-            axisLabel: {
-              show: true,
-              interval: 0,
-              color: '#333'
-            }
-          },
-          yAxis: [
-            {
-              type: 'value',
-              axisLine: {
-                lineStyle: {
-                  color: '#17b3a3'
-                }
-              }
-            }
-          ],
-          color: ['#2ec7c9', '#17b3a3', '#2ec7c9', '#17b3a3', '#2ec7c9', '#17b3a3'],
-          series: []
-        },
-        user: {
-          legend: {
-            // tuliwenzi
-            textStyle: {
-              color: '#333'
-            }
-          },
-          grid: {
-            left: '20%'
-          },
-          // tishikuang
-          tooltip: {
-            trigger: 'axis'
-          },
-          xAxis: {
-            type: 'category',
-            data: [],
-            axisLine: {
-              lineStyle: {
-                color: '#17b3a3'
-              }
-            },
-            axisLabel: {
-              interval: 0,
-              color: '#333'
-            }
-          },
-          yAxis: [
-            {
-              type: 'value',
-              axisLine: {
-                lineStyle: {
-                  color: '#17b3a3'
-                }
-              }
-            }
-          ],
-          color: ['#2ec7c9', '#17b3a3'],
-          series: []
-        },
-        vedio: {
-          tooltip: {
-            trigger: 'item'
-          },
-          color: [
-            '#0f78f4',
-            '#dd536b',
-            '#9462e5',
-            '#a6a6a6',
-            '#e1bb22',
-            '#39c362',
-            '#3ed1cf'
-          ],
-          series: []
-        }
-      },
-      echartsData1: {
-        order: {
-          legend: {
-            // tuliwenzi
-            textStyle: {
-              color: '#333'
-            }
-          },
-          grid: {
-            left: '20%'
-          },
-          // tishikuang
-          tooltip: {
-            trigger: 'axis'
-          },
-          xAxis: {
-            type: 'category',
-            data: [],
-            axisLine: {
-              lineStyle: {
-                color: '#17b3a3'
-              }
-            },
-            axisLabel: {
-              show: true,
-              interval: 0,
-              color: '#333'
-            }
-          },
-          yAxis: [
-            {
-              type: 'value',
-              axisLine: {
-                lineStyle: {
-                  color: '#17b3a3'
-                }
-              }
-            }
-          ],
-          color: ['#2ec7c9', '#17b3a3', '#2ec7c9', '#17b3a3', '#2ec7c9', '#17b3a3'],
-          series: []
-        },
-        user: {
-          legend: {
-            // tuliwenzi
-            textStyle: {
-              color: '#333'
-            }
-          },
-          grid: {
-            left: '20%'
-          },
-          // tishikuang
-          tooltip: {
-            trigger: 'axis'
-          },
-          xAxis: {
-            type: 'category',
-            data: [],
-            axisLine: {
-              lineStyle: {
-                color: '#17b3a3'
-              }
-            },
-            axisLabel: {
-              interval: 0,
-              color: '#333'
-            }
-          },
-          yAxis: [
-            {
-              type: 'value',
-              axisLine: {
-                lineStyle: {
-                  color: '#17b3a3'
-                }
-              }
-            }
-          ],
-          color: ['#2ec7c9', '#17b3a3'],
-          series: []
-        },
-        vedio: {
-          tooltip: {
-            trigger: 'item'
-          },
-          color: [
-            '#0f78f4',
-            '#dd536b',
-            '#9462e5',
-            '#a6a6a6',
-            '#e1bb22',
-            '#39c362',
-            '#3ed1cf'
-          ],
-          series: []
-        }
-      },
       echartData: {
         order: {
           xData: [],
@@ -355,7 +159,7 @@ export default {
           })
         })
 
-        const future = res.data.futureData
+        const future = res.data.futureQZ
         console.log(future)
         // 传给组件的值
         this.echartData.newone.xData = order.date
@@ -374,12 +178,12 @@ export default {
         // 用户图
         this.echartData.user.data = res.data.userData.map((item) => item.date)
         this.echartData.user.series.push({
-          name: '今日死亡',
+          name: '累计死亡',
           data: res.data.userData.map((item) => item.new),
           type: 'bar'
         })
         this.echartData.user.series.push({
-          name: '今日新增',
+          name: '累计新增',
           data: res.data.userData.map((item) => item.active),
           type: 'bar'
         })

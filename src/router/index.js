@@ -19,6 +19,11 @@ const routes = [
         path: '/mall',
         name: 'mall',
         component: () => import('@/views/MallManage/MallManage')
+      },
+      {
+        path: '/focast',
+        name: 'focast',
+        component: () => import('@/views/Focast/Focast')
       }
     ]
   },
