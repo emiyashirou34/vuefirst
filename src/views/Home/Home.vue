@@ -60,9 +60,15 @@
 </template>
 
 <script>
-import { getHome } from '../../api/data'
 import Echart from '@/components/ECharts'
 export default {
+  created () {
+    this.getCountData()
+    this.getTableList()
+    this.getLineList()
+    this.getBarChart()
+    this.getPie()
+  },
   components: {
     Echart
   },
@@ -73,43 +79,43 @@ export default {
       tableLabel: {
         name: '地区',
         todayBuy: '总人数',
-        monthBuy: '感染数',
-        totalBuy: '死亡数'
+        monthBuy: '本月感染数',
+        totalBuy: '本月死亡数'
       },
       countData: [
         {
           name: '今日确诊数',
-          value: 1234,
+          value: 44876,
           icon: 'success',
           color: '#2ec7c9'
         },
         {
-          name: '今日治愈数',
-          value: 1234,
+          name: '今日治愈',
+          value: 22842,
           icon: 'star-on',
           color: '#ffb980'
         },
         {
           name: '今日死亡数',
-          value: 1234,
+          value: 527,
           icon: 's-goods',
           color: '#ffb980'
         },
         {
-          name: '本月确诊数',
-          value: 1234,
+          name: '累计确诊数',
+          value: 208911,
           icon: 'success',
           color: '#2ec7c9'
         },
         {
-          name: '本月治愈数',
-          value: 1234,
+          name: '累计治愈数',
+          value: 52227,
           icon: 'star-on',
           color: '#ffb980'
         },
         {
-          name: '本月死亡数',
-          value: 1234,
+          name: '累计死亡数',
+          value: 3420,
           icon: 's-goods',
           color: '#ffb980'
         }
@@ -130,47 +136,57 @@ export default {
     }
   },
   methods: {
-    getTableData () {
-      getHome().then((res) => {
-        this.tableData = res.data.tableData
+    async getCountData () {
+      const { data: res } = await this.$http.get('intelligent_guidance/index')
+      if (res.code !== 200) return this.$message.error(res.message)
+      this.countData = res.data
+    },
+    async getTableList () {
+      const { data: res } = await this.$http.get('intelligent_guidance/tableList')
+      if (res.code !== 200) return this.$message.error(res.message)
+      this.tableData = res.data
+    },
+    async getLineList () {
+      const { data: res } = await this.$http.get('intelligent_guidance/lineChart')
+      if (res.code !== 200) return this.$message.error(res.message)
+      // 折线图的展示
+      const order = res.data
+      const keyArray = Object.keys(order.data[0])
 
-        // 折线图的展示
-        const order = res.data.orderData
-        console.log(order)
-        const keyArray = Object.keys(order.data[0])
-
-        // 传给组件的值
-        this.echartData.order.xData = order.date
-        keyArray.forEach((key) => {
-          this.echartData.order.series.push({
-            name: key,
-            data: order.data.map((item) => item[key]),
-            type: 'line'
-          })
-        })
-
-        //  柱状图封装
-        this.echartData.user.xData = res.data.userData.map((item) => item.date)
-        this.echartData.user.series.push({
-          name: '今日新增',
-          data: res.data.userData.map((item) => item.new),
-          type: 'bar'
-        })
-        this.echartData.user.series.push({
-          name: '今日死亡',
-          data: res.data.userData.map((item) => item.active),
-          type: 'bar'
-        })
-
-        this.echartData.vedio.series.push({
-          data: res.data.videoData,
-          type: 'pie'
+      // 传给组件的值
+      this.echartData.order.xData = order.date
+      keyArray.forEach((key) => {
+        this.echartData.order.series.push({
+          name: key,
+          data: order.data.map((item) => item[key]),
+          type: 'line'
         })
       })
+    },
+    async getBarChart () {
+      const { data: res } = await this.$http.get('intelligent_guidance/barchart')
+      if (res.code !== 200) return this.$message.error(res.message)
+      //  柱状图封装
+      this.echartData.user.xData = res.data.map((item) => item.date)
+      this.echartData.user.series.push({
+        name: '今日新增',
+        data: res.data.map((item) => item.todayNew),
+        type: 'bar'
+      })
+      this.echartData.user.series.push({
+        name: '今日死亡',
+        data: res.data.map((item) => item.active),
+        type: 'bar'
+      })
+    },
+    async getPie () {
+      const { data: res } = await this.$http.get('intelligent_guidance/piechart')
+      if (res.code !== 200) return this.$message.error(res.message)
+      this.echartData.vedio.series.push({
+        data: res.data,
+        type: 'pie'
+      })
     }
-  },
-  mounted () {
-    this.getTableData()
   }
 }
 </script>

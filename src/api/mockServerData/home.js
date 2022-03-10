@@ -67,32 +67,32 @@ export default {
         userData: [
           {
             date: '纽约',
-            new: 5,
+            todayNew: 5,
             active: 200
           },
           {
             date: '加利福尼亚',
-            new: 10,
+            todayNew: 10,
             active: 500
           },
           {
             date: '华盛顿',
-            new: 12,
+            todayNew: 12,
             active: 550
           },
           {
             date: '德克萨斯',
-            new: 60,
+            todayNew: 60,
             active: 800
           },
           {
             date: '北卡罗来纳州',
-            new: 65,
+            todayNew: 65,
             active: 550
           },
           {
             date: '佛蒙特州',
-            new: 53,
+            todayNew: 53,
             active: 770
           }
         ],

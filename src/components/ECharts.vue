@@ -80,7 +80,8 @@ export default {
           },
           axisLabel: {
             interval: 0,
-            color: '#333'
+            color: '#333',
+            rotate: '45'
           }
         },
         yAxis: [

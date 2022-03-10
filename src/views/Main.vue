@@ -12,6 +12,10 @@
 <script>
 import CommonAside from '../components/CommonAside.vue'
 import CommonHeader from '../components/CommonHeader.vue'
+import axios from 'axios'
+
+// 配置请求的跟路径
+axios.defaults.baseURL = 'http://127.0.0.1:5554/zndz/'
 export default {
   name: 'Main',
   components: { CommonAside, CommonHeader }
